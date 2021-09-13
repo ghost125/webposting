@@ -61,9 +61,15 @@ def app():
     if incountry:
         country_sheets = openpyxl.load_workbook(incountry).sheetnames
         country=st.selectbox("Country:",country_sheets)
-        eucat_id=pd.read_excel(incountry,country)
-        st.write('The Country EuCAT ID is:')
-        st.dataframe(eucat_id)
+    else:
+        incountry='euctid_country.xlsx'
+        country='country'
+    
+    country_sheets = openpyxl.load_workbook(incountry).sheetnames
+    country=st.selectbox("Country:",country_sheets)
+    eucat_id=pd.read_excel(incountry,country)
+    st.write('The Country EuCAT ID is:')
+    st.dataframe(eucat_id)
  
     inexcel = st.file_uploader('Upload Excel created base on TLF meta',key='Upload_excel')
     if inexcel:
