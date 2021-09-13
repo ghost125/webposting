@@ -60,8 +60,6 @@ def app():
     incountry = st.file_uploader('Upload Eucat contry excel file',key='Upload_country')
     if incountry:
         country_sheets = openpyxl.load_workbook(incountry).sheetnames
-        country=st.selectbox("Country:",country_sheets)                  
-        country_sheets = openpyxl.load_workbook(incountry).sheetnames
         country=st.selectbox("Country:",country_sheets)
         eucat_id=pd.read_excel(incountry,country)
         st.write('The Country EuCAT ID is:')
