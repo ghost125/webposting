@@ -58,13 +58,16 @@ def add_block(checklist,label,inexcel,showlevel=4):
 def app():
     inxml = st.file_uploader('Upload XML file',key='Upload_xml')
     incountry = st.file_uploader('Upload Eucat contry excel file',key='Upload_country')
+    country_sheets = openpyxl.load_workbook(incountry).sheetnames
+    country=st.selectbox("Country:",country_sheets)
+    '''
     if incountry:
         country_sheets = openpyxl.load_workbook(incountry).sheetnames
         country=st.selectbox("Country:",country_sheets)
     else:
         incountry='euctid_country.xlsx'
         country='country'
-
+    '''
     eucat_id=pd.read_excel(incountry,country)
     st.write('The Country EuCAT ID is:')
     st.dataframe(eucat_id)
