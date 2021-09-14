@@ -57,7 +57,7 @@ def add_block(checklist,label,inexcel,showlevel=4):
 
 def app():
     inxml = st.file_uploader('Upload XML file',key='Upload_xml')
-    incountry = st.file_uploader('Upload Eucat contry excel file',key='Upload_country')
+    incountry = st.file_uploader('Upload Eucat contry excel file',key='Upload_country',type='XLSX')
     if incountry:
         country_sheets = openpyxl.load_workbook(incountry).sheetnames
         country=st.selectbox("Country:",country_sheets)
@@ -71,7 +71,7 @@ def app():
     st.write('The Country EuCAT ID is:')
     st.dataframe(eucat_id)
  
-    inexcel = st.file_uploader('Upload Excel created base on TLF meta',key='Upload_excel')
+    inexcel = st.file_uploader('Upload Excel created base on TLF meta',key='Upload_excel',type='XLSX')
     if inexcel:
         insheets = openpyxl.load_workbook(inexcel).sheetnames
         if isinstance(insheets,str):
